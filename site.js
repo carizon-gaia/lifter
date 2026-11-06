@@ -28,7 +28,7 @@
     const placeholder = Array.from(slot.childNodes);
     const element = document.createElement(item.type === 'video' ? 'video' : 'img');
     element.className = 'media-element';
-    const label = item.alt || slot.dataset.mediaLabel || 'LiDARGen 项目素材';
+    const label = item.alt || slot.dataset.mediaLabel || 'LiFTeR 项目素材';
     if (item.type === 'video') {
       element.controls = true;
       element.playsInline = true;

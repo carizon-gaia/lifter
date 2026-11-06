@@ -147,3 +147,15 @@ h2,.section-main h2,.closing-section h2{font-size:clamp(30px,3vw,40px);line-heig
   .project-authors{font-size:15px}
   .reported-grid strong{font-size:22px}
 }
+
+/* Rasterized 3D overview, with a readable caption at every viewport size. */
+.pipeline-figure{margin:24px 0 20px}
+.pipeline-figure a,.pipeline-figure img{display:block;width:100%}
+.pipeline-figure img{height:auto;border-radius:3px}
+.pipeline-figure figcaption{margin-top:14px;color:#72635d;font-size:14px;line-height:1.7}
+.pipeline-figure figcaption span{display:block;margin-top:5px;color:#a94428;font-size:13px}
+@media(max-width:760px){.pipeline-figure{margin:18px 0}.pipeline-figure figcaption{font-size:14px}}
+
+/* Keep these plots comfortably sized while retaining access to full-resolution originals. */
+.compact-figure{max-width:700px;margin-inline:auto}
+.compact-figure img{max-height:540px;width:auto;max-width:100%;margin-inline:auto;object-fit:contain}
