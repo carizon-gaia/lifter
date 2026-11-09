@@ -16,6 +16,13 @@
   }
   tabs.forEach(tab => tab.addEventListener('click', () => showDataset(tab.dataset.dataset)));
 
+  const isEnglish = document.documentElement.lang.toLowerCase().startsWith('en');
+  document.querySelectorAll('.language-switch a').forEach(link => {
+    link.addEventListener('click', () => {
+      link.hash = location.hash;
+    });
+  });
+
   const media = window.LIDARGEN_MEDIA || {};
   document.querySelectorAll('[data-media-slot]').forEach(slot => {
     const item = media[slot.dataset.mediaSlot];
@@ -28,7 +35,8 @@
     const placeholder = Array.from(slot.childNodes);
     const element = document.createElement(item.type === 'video' ? 'video' : 'img');
     element.className = 'media-element';
-    const label = item.alt || slot.dataset.mediaLabel || 'LiFTeR 项目素材';
+    const localizedAlt = isEnglish ? item.altEn : item.altZh;
+    const label = localizedAlt || (!isEnglish && item.alt) || slot.dataset.mediaLabel || (isEnglish ? 'LiFTeR project media' : 'LiFTeR 项目素材');
     if (item.type === 'video') {
       element.controls = true;
       element.playsInline = true;

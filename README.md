@@ -1,6 +1,6 @@
 # LiFTeR 项目展示网页
 
-独立的静态网页，无需安装依赖或构建，可直接打开 `index.html`。页面采用相对路径，也可将 `website/` 发布到任意静态站点或 GitHub Pages。
+独立的静态网页，无需安装依赖或构建。`index.html` 是中文版，`index-en.html` 是英文版，两页通过页头切换，均使用相对路径，可直接打开或发布到任意静态站点或 GitHub Pages。修改页面文案时请同步维护两种语言。
 
 ## 本地预览
 
@@ -19,12 +19,12 @@ python3 -m http.server 8000
 
 ```js
 window.LIDARGEN_MEDIA = {
-  'hero': { type: 'video', src: './assets/media/hero.mp4', poster: './assets/media/hero.jpg' },
+  'hero': { type: 'video', src: './assets/media/hero.mp4', poster: './assets/media/hero.jpg', altZh: '项目演示视频', altEn: 'Project demonstration video' },
   // null 或缺省会保留首屏视频占位。
 };
 ```
 
-支持 `video` / `image` 两种类型；视频带控制栏，默认不自动播放。路径相对于 `index.html`。素材加载失败时，页面会回退到原占位内容。建议视频为 MP4（H.264），图片为 JPG、PNG 或 WebP；需要音轨时请使用浏览器播放控件。
+支持 `video` / `image` 两种类型；使用 `altZh` 和 `altEn` 分别配置中英文无障碍描述。旧的 `alt` 配置仍用于中文页面，英文未提供时使用英文页面的默认描述。视频带控制栏，默认不自动播放。路径相对于 `index.html`。素材加载失败时，页面会回退到原占位内容。建议视频为 MP4（H.264），图片为 JPG、PNG 或 WebP；需要音轨时请使用浏览器播放控件。
 
 | 配置项 | 对应位置 | 建议比例 |
 |---|---|---|
@@ -32,7 +32,7 @@ window.LIDARGEN_MEDIA = {
 
 结果与失败案例已改为根据论文排列的静态图片，直接在 `index.html` 中引用 `assets/figures/`；`media.js` 中旧结果占位的配置项暂不对应页面位置。方法概览中的流程示意图为 `assets/figures/20261106-210438.png`，需要时可替换该图片。
 
-需要修改文案、作者信息或增加论文/代码链接，可编辑 `index.html`；配色和布局在 `styles.css`。网页中的实验数字来自项目材料，均标明“未独立复现、实验口径待补充”。
+需要修改文案、作者信息或增加论文/代码链接，请同步编辑中英文 HTML；配色和布局在 `styles.css`。网页中的实验数字来自项目材料，均标明“未独立复现、实验口径待补充”。
 
 ## 发布到 GitHub Pages
 
