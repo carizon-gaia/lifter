@@ -9,7 +9,13 @@
  * 视频默认带播放控件，不自动播放，避免干扰和无素材时的空播放器。
  */
 window.LIDARGEN_MEDIA = {
-  'hero': null,
+  'hero': {
+    type: 'video',
+    src: './assets/media/LiFTeR_demo_en_centered.mp4',
+    altZh: 'LiFTeR 项目演示视频，英语讲解，提供英文字幕',
+    altEn: 'LiFTeR project demonstration video with English narration and subtitles',
+    subtitles: { src: './assets/media/LiFTeR_demo_en_centered.vtt', language: 'en', label: 'English', default: true },
+  },
   'results-feature': null,
   'nuscenes-01': null,
   'nuscenes-02': null,

@@ -1,10 +1,10 @@
 # LiFTeR 项目展示网页
 
-独立的静态网页，无需安装依赖或构建。`index.html` 是中文版，`index-en.html` 是英文版，两页通过页头切换，均使用相对路径，可直接打开或发布到任意静态站点或 GitHub Pages。修改页面文案时请同步维护两种语言。
+独立的静态网页，无需安装依赖或构建。`index.html` 是中文版，`index-en.html` 是英文版，两页通过页头切换，均使用相对路径，可发布到任意静态站点或 GitHub Pages。修改页面文案时请同步维护两种语言。
 
 ## 本地预览
 
-直接双击 `index.html`，或在仓库根目录执行：
+为确保浏览器正常加载字幕，建议通过本地 HTTP 服务预览。在仓库根目录执行：
 
 ```bash
 python3 -m http.server 8000
@@ -19,16 +19,20 @@ python3 -m http.server 8000
 
 ```js
 window.LIDARGEN_MEDIA = {
-  'hero': { type: 'video', src: './assets/media/hero.mp4', poster: './assets/media/hero.jpg', altZh: '项目演示视频', altEn: 'Project demonstration video' },
+  'hero': {
+    type: 'video', src: './assets/media/hero.mp4', poster: './assets/media/hero.jpg',
+    altZh: '项目演示视频', altEn: 'Project demonstration video',
+    subtitles: { src: './assets/media/hero.vtt', language: 'en', label: 'English', default: true },
+  },
   // null 或缺省会保留首屏视频占位。
 };
 ```
 
-支持 `video` / `image` 两种类型；使用 `altZh` 和 `altEn` 分别配置中英文无障碍描述。旧的 `alt` 配置仍用于中文页面，英文未提供时使用英文页面的默认描述。视频带控制栏，默认不自动播放。路径相对于 `index.html`。素材加载失败时，页面会回退到原占位内容。建议视频为 MP4（H.264），图片为 JPG、PNG 或 WebP；需要音轨时请使用浏览器播放控件。
+首页当前使用 `assets/media/LiFTeR_demo_en_centered.mp4` 和对应的英文 WebVTT 字幕。支持 `video` / `image` 两种类型；使用 `altZh` 和 `altEn` 分别配置中英文无障碍描述。旧的 `alt` 配置仍用于中文页面，英文未提供时使用英文页面的默认描述。视频带控制栏，默认不自动播放；字幕可通过播放器控件切换。路径相对于 `index.html`，素材加载失败时页面会回退到原占位内容。建议视频为 MP4（H.264），图片为 JPG、PNG 或 WebP。
 
 | 配置项 | 对应位置 | 建议比例 |
 |---|---|---|
-| `hero` | 首屏项目视频 | 约 2.27:1，可使用 16:9 |
+| `hero` | 首屏项目视频 | 16:9 |
 
 结果与失败案例已改为根据论文排列的静态图片，直接在 `index.html` 中引用 `assets/figures/`；`media.js` 中旧结果占位的配置项暂不对应页面位置。方法概览中的流程示意图为 `assets/figures/20261106-210438.png`，需要时可替换该图片。
 

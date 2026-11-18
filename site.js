@@ -43,6 +43,15 @@
       element.preload = 'metadata';
       element.setAttribute('aria-label', label);
       if (item.poster) element.poster = item.poster;
+      if (item.subtitles && typeof item.subtitles.src === 'string' && item.subtitles.src.trim()) {
+        const track = document.createElement('track');
+        track.kind = 'subtitles';
+        track.srclang = item.subtitles.language || 'en';
+        track.label = item.subtitles.label || 'English';
+        track.src = item.subtitles.src;
+        track.default = Boolean(item.subtitles.default);
+        element.append(track);
+      }
     } else {
       element.alt = label;
       element.loading = 'lazy';

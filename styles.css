@@ -173,3 +173,8 @@ h2,.section-main h2,.closing-section h2{font-size:clamp(30px,3vw,40px);line-heig
 html[lang="en"] .range-row{grid-template-columns:160px minmax(0,1fr)}
 html[lang="en"] .range-rows{min-width:700px}
 
+/* Match the demonstration video's 16:9 frame on desktop and mobile. */
+.hero-media{aspect-ratio:16/9;height:auto;min-height:0}
+.hero-media .media-element{aspect-ratio:16/9;height:auto}
+
+

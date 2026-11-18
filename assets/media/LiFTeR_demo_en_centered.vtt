@@ -1,0 +1,61 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.647
+LiFTeR: Generating LiDAR Gaussian Fields from Surround-View Cameras.
+
+2
+00:00:06.350 --> 00:00:21.965
+Scene-specific LiDAR reconstruction typically uses real LiDAR observations and optimization for each scene. In contrast, a generated point cloud or range image is not necessarily a renderable scene representation.
+
+3
+00:00:23.190 --> 00:00:35.179
+LiFTeR explores a combination of camera-conditioned diffusion and Gaussian decoding, aiming to generate a renderable LiDAR representation while reducing per-scene optimization.
+
+4
+00:00:36.390 --> 00:00:50.447
+During training, frozen variational autoencoders encode six camera images and ground-truth LiDAR range and intensity. The latent canvas contains one LiDAR slot and six image-condition slots.
+
+5
+00:00:51.670 --> 00:01:08.437
+For generation, the LiDAR slot starts from noise. A multi-view diffusion transformer uses the camera conditions and iteratively predicts a LiDAR latent. The current data pipeline still reads LiDAR fields for canvas construction and evaluation.
+
+6
+00:01:09.670 --> 00:01:26.646
+The resulting latent can be directly decoded by the LiDAR variational autoencoder, or sent through an optional Gaussian decoding and rendering branch. The U-Net shown in the figure is optional and is not a required step in the current single-frame inference path.
+
+7
+00:01:27.870 --> 00:01:39.570
+The Gaussian decoder uses sequence modeling with Mamba two and self-attention. It predicts per-ray depth, scale, rotation, opacity, intensity, and ray-drop attributes.
+
+8
+00:01:40.790 --> 00:01:53.484
+The Gaussian rendering branch produces range, intensity, and return validity. The rendered observations can then be mapped back into a sparse point cloud using the LiDAR sensor geometry.
+
+9
+00:01:54.710 --> 00:02:06.027
+Here, a LiFTeR generated point cloud is compared with the corresponding ground-truth LiDAR. These are qualitative project examples, not an independent reproduction.
+
+10
+00:02:07.230 --> 00:02:23.177
+This same-frame range-view comparison shows the ground truth and LiFTeR camera-conditioned result. The other displayed reconstruction methods use real LiDAR observations; red boxes are regions highlighted in the original material.
+
+11
+00:02:24.390 --> 00:02:34.159
+For a real-world example, the generated LiDAR points are projected onto six surrounding camera views. These images are static project results.
+
+12
+00:02:35.390 --> 00:02:44.830
+The real-world example also compares generated and ground-truth point clouds, allowing their scene structures to be inspected side by side.
+
+13
+00:02:46.030 --> 00:02:56.463
+The project further presents a qualitative downstream detection example, with predicted boxes projected onto the camera view for generated and ground-truth LiDAR.
+
+14
+00:02:57.670 --> 00:03:07.483
+The failure cases show remaining limitations. In this low-light scene, distant structures can be missing or distorted in the generated point cloud.
+
+15
+00:03:08.710 --> 00:03:16.028
+LiFTeR explores a path from surround-view images to renderable LiDAR representations. Thank you for watching.
