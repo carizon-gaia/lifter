@@ -14,7 +14,7 @@ window.LIDARGEN_MEDIA = {
     src: './assets/media/LiFTeR_demo_en_centered.mp4',
     altZh: 'LiFTeR 项目演示视频，英语讲解，提供英文字幕',
     altEn: 'LiFTeR project demonstration video with English narration and subtitles',
-    subtitles: { src: './assets/media/LiFTeR_demo_en_centered.vtt', language: 'en', label: 'English', default: true },
+    subtitles: { src: './assets/media/LiFTeR_demo_en_centered.vtt?v=20261118-captions', language: 'en', label: 'English', default: true },
   },
   'results-feature': null,
   'nuscenes-01': null,

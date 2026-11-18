@@ -176,6 +176,7 @@ html[lang="en"] .range-rows{min-width:700px}
 /* Match the demonstration video's 16:9 frame on desktop and mobile. */
 .hero-media{aspect-ratio:16/9;height:auto;min-height:0}
 .hero-media .media-element{aspect-ratio:16/9;height:auto}
-.hero-media video::cue{font-size:clamp(10px,.85vw,14px)}
+/* Keep this font scale in sync with the cue measurement in site.js. */
+.hero-media video::cue{font-family:Arial,sans-serif;font-size:clamp(12px,1.4vw,24px)}
 
 
