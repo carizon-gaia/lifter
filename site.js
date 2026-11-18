@@ -50,6 +50,33 @@
         track.label = item.subtitles.label || 'English';
         track.src = item.subtitles.src;
         track.default = Boolean(item.subtitles.default);
+        // Keep captions above the controls on narrow players; use more of the
+        // available frame on larger players and in fullscreen.
+        const positionCaptions = () => {
+          const cues = track.track.cues;
+          if (!cues) return;
+          const line = element.clientWidth < 600 ? 55 : 80;
+          let changed = false;
+          for (const cue of cues) {
+            cue.snapToLines = false;
+            if (cue.line !== line) {
+              cue.line = line;
+              changed = true;
+            }
+          }
+          // Chrome keeps drawing the active cue at its old spot until the
+          // track is remounted; toggle the mode so a mid-play resize moves it.
+          if (changed && track.track.mode === 'showing') {
+            track.track.mode = 'disabled';
+            track.track.mode = 'showing';
+          }
+        };
+        track.addEventListener('load', positionCaptions);
+        if (typeof ResizeObserver !== 'undefined') {
+          new ResizeObserver(positionCaptions).observe(element);
+        } else {
+          window.addEventListener('resize', positionCaptions);
+        }
         element.append(track);
       }
     } else {

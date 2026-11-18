@@ -1,6 +1,6 @@
 # LiFTeR 项目展示网页
 
-独立的静态网页，无需安装依赖或构建。`index.html` 是中文版，`index-en.html` 是英文版，两页通过页头切换，均使用相对路径，可发布到任意静态站点或 GitHub Pages。修改页面文案时请同步维护两种语言。
+独立的静态网页，无需安装依赖或构建。`index.html` 默认显示英文，`index-zh.html` 是中文版，两页通过页头切换；`index-en.html` 保留为英文兼容地址。页面使用相对路径，可发布到任意静态站点或 GitHub Pages。修改页面文案时请同步维护中英文页面，并保持 `index.html` 和 `index-en.html` 一致。
 
 ## 本地预览
 

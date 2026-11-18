@@ -1,148 +1,148 @@
 WEBVTT
 
-00:00:00.350 --> 00:00:04.134 position:50% size:60% align:center
+00:00:00.350 --> 00:00:04.134 line:55% position:50% size:60% align:center
 LiFTeR: Generating LiDAR Gaussian Fields from Surround-View
 
-00:00:04.134 --> 00:00:04.647 position:50% size:60% align:center
+00:00:04.134 --> 00:00:04.647 line:55% position:50% size:60% align:center
 Cameras.
 
-00:00:06.350 --> 00:00:10.886 position:50% size:60% align:center
+00:00:06.350 --> 00:00:10.886 line:55% position:50% size:60% align:center
 Scene-specific LiDAR reconstruction typically uses real LiDAR
 
-00:00:10.886 --> 00:00:15.347 position:50% size:60% align:center
+00:00:10.886 --> 00:00:15.347 line:55% position:50% size:60% align:center
 observations and optimization for each scene. In contrast, a
 
-00:00:15.347 --> 00:00:19.586 position:50% size:60% align:center
+00:00:15.347 --> 00:00:19.586 line:55% position:50% size:60% align:center
 generated point cloud or range image is not necessarily a
 
-00:00:19.586 --> 00:00:21.965 position:50% size:60% align:center
+00:00:19.586 --> 00:00:21.965 line:55% position:50% size:60% align:center
 renderable scene representation.
 
-00:00:23.190 --> 00:00:27.669 position:50% size:60% align:center
+00:00:23.190 --> 00:00:27.669 line:55% position:50% size:60% align:center
 LiFTeR explores a combination of camera-conditioned diffusion and
 
-00:00:27.669 --> 00:00:31.527 position:50% size:60% align:center
+00:00:27.669 --> 00:00:31.527 line:55% position:50% size:60% align:center
 Gaussian decoding, aiming to generate a renderable LiDAR
 
-00:00:31.527 --> 00:00:35.179 position:50% size:60% align:center
+00:00:31.527 --> 00:00:35.179 line:55% position:50% size:60% align:center
 representation while reducing per-scene optimization.
 
-00:00:36.390 --> 00:00:40.825 position:50% size:60% align:center
+00:00:36.390 --> 00:00:40.825 line:55% position:50% size:60% align:center
 During training, frozen variational autoencoders encode six
 
-00:00:40.825 --> 00:00:45.411 position:50% size:60% align:center
+00:00:40.825 --> 00:00:45.411 line:55% position:50% size:60% align:center
 camera images and ground-truth LiDAR range and intensity. The
 
-00:00:45.411 --> 00:00:49.996 position:50% size:60% align:center
+00:00:45.411 --> 00:00:49.996 line:55% position:50% size:60% align:center
 latent canvas contains one LiDAR slot and six image-condition
 
-00:00:49.996 --> 00:00:50.447 position:50% size:60% align:center
+00:00:49.996 --> 00:00:50.447 line:55% position:50% size:60% align:center
 slots.
 
-00:00:51.670 --> 00:00:56.001 position:50% size:60% align:center
+00:00:51.670 --> 00:00:56.001 line:55% position:50% size:60% align:center
 For generation, the LiDAR slot starts from noise. A multi-view
 
-00:00:56.001 --> 00:01:00.473 position:50% size:60% align:center
+00:00:56.001 --> 00:01:00.473 line:55% position:50% size:60% align:center
 diffusion transformer uses the camera conditions and iteratively
 
-00:01:00.473 --> 00:01:04.804 position:50% size:60% align:center
+00:01:00.473 --> 00:01:04.804 line:55% position:50% size:60% align:center
 predicts a LiDAR latent. The current data pipeline still reads
 
-00:01:04.804 --> 00:01:08.437 position:50% size:60% align:center
+00:01:04.804 --> 00:01:08.437 line:55% position:50% size:60% align:center
 LiDAR fields for canvas construction and evaluation.
 
-00:01:09.670 --> 00:01:13.406 position:50% size:60% align:center
+00:01:09.670 --> 00:01:13.406 line:55% position:50% size:60% align:center
 The resulting latent can be directly decoded by the LiDAR
 
-00:01:13.406 --> 00:01:17.404 position:50% size:60% align:center
+00:01:13.406 --> 00:01:17.404 line:55% position:50% size:60% align:center
 variational autoencoder, or sent through an optional Gaussian
 
-00:01:17.404 --> 00:01:21.534 position:50% size:60% align:center
+00:01:17.404 --> 00:01:21.534 line:55% position:50% size:60% align:center
 decoding and rendering branch. The U-Net shown in the figure is
 
-00:01:21.534 --> 00:01:25.663 position:50% size:60% align:center
+00:01:21.534 --> 00:01:25.663 line:55% position:50% size:60% align:center
 optional and is not a required step in the current single-frame
 
-00:01:25.663 --> 00:01:26.646 position:50% size:60% align:center
+00:01:25.663 --> 00:01:26.646 line:55% position:50% size:60% align:center
 inference path.
 
-00:01:27.870 --> 00:01:32.266 position:50% size:60% align:center
+00:01:27.870 --> 00:01:32.266 line:55% position:50% size:60% align:center
 The Gaussian decoder uses sequence modeling with Mamba two and
 
-00:01:32.266 --> 00:01:36.450 position:50% size:60% align:center
+00:01:32.266 --> 00:01:36.450 line:55% position:50% size:60% align:center
 self-attention. It predicts per-ray depth, scale, rotation,
 
-00:01:36.450 --> 00:01:39.570 position:50% size:60% align:center
+00:01:36.450 --> 00:01:39.570 line:55% position:50% size:60% align:center
 opacity, intensity, and ray-drop attributes.
 
-00:01:40.790 --> 00:01:44.929 position:50% size:60% align:center
+00:01:40.790 --> 00:01:44.929 line:55% position:50% size:60% align:center
 The Gaussian rendering branch produces range, intensity, and
 
-00:01:44.929 --> 00:01:49.138 position:50% size:60% align:center
+00:01:44.929 --> 00:01:49.138 line:55% position:50% size:60% align:center
 return validity. The rendered observations can then be mapped
 
-00:01:49.138 --> 00:01:53.484 position:50% size:60% align:center
+00:01:49.138 --> 00:01:53.484 line:55% position:50% size:60% align:center
 back into a sparse point cloud using the LiDAR sensor geometry.
 
-00:01:54.710 --> 00:01:58.692 position:50% size:60% align:center
+00:01:54.710 --> 00:01:58.692 line:55% position:50% size:60% align:center
 Here, a LiFTeR generated point cloud is compared with the
 
-00:01:58.692 --> 00:02:03.093 position:50% size:60% align:center
+00:01:58.692 --> 00:02:03.093 line:55% position:50% size:60% align:center
 corresponding ground-truth LiDAR. These are qualitative project
 
-00:02:03.093 --> 00:02:06.027 position:50% size:60% align:center
+00:02:03.093 --> 00:02:06.027 line:55% position:50% size:60% align:center
 examples, not an independent reproduction.
 
-00:02:07.230 --> 00:02:11.726 position:50% size:60% align:center
+00:02:07.230 --> 00:02:11.726 line:55% position:50% size:60% align:center
 This same-frame range-view comparison shows the ground truth and
 
-00:02:11.726 --> 00:02:15.449 position:50% size:60% align:center
+00:02:11.726 --> 00:02:15.449 line:55% position:50% size:60% align:center
 LiFTeR camera-conditioned result. The other displayed
 
-00:02:15.449 --> 00:02:20.016 position:50% size:60% align:center
+00:02:15.449 --> 00:02:20.016 line:55% position:50% size:60% align:center
 reconstruction methods use real LiDAR observations; red boxes are
 
-00:02:20.016 --> 00:02:23.177 position:50% size:60% align:center
+00:02:20.016 --> 00:02:23.177 line:55% position:50% size:60% align:center
 regions highlighted in the original material.
 
-00:02:24.390 --> 00:02:28.298 position:50% size:60% align:center
+00:02:24.390 --> 00:02:28.298 line:55% position:50% size:60% align:center
 For a real-world example, the generated LiDAR points are
 
-00:02:28.298 --> 00:02:32.554 position:50% size:60% align:center
+00:02:28.298 --> 00:02:32.554 line:55% position:50% size:60% align:center
 projected onto six surrounding camera views. These images are
 
-00:02:32.554 --> 00:02:34.159 position:50% size:60% align:center
+00:02:32.554 --> 00:02:34.159 line:55% position:50% size:60% align:center
 static project results.
 
-00:02:35.390 --> 00:02:39.731 position:50% size:60% align:center
+00:02:35.390 --> 00:02:39.731 line:55% position:50% size:60% align:center
 The real-world example also compares generated and ground-truth
 
-00:02:39.731 --> 00:02:43.934 position:50% size:60% align:center
+00:02:39.731 --> 00:02:43.934 line:55% position:50% size:60% align:center
 point clouds, allowing their scene structures to be inspected
 
-00:02:43.934 --> 00:02:44.830 position:50% size:60% align:center
+00:02:43.934 --> 00:02:44.830 line:55% position:50% size:60% align:center
 side by side.
 
-00:02:46.030 --> 00:02:50.138 position:50% size:60% align:center
+00:02:46.030 --> 00:02:50.138 line:55% position:50% size:60% align:center
 The project further presents a qualitative downstream detection
 
-00:02:50.138 --> 00:02:54.311 position:50% size:60% align:center
+00:02:50.138 --> 00:02:54.311 line:55% position:50% size:60% align:center
 example, with predicted boxes projected onto the camera view for
 
-00:02:54.311 --> 00:02:56.463 position:50% size:60% align:center
+00:02:54.311 --> 00:02:56.463 line:55% position:50% size:60% align:center
 generated and ground-truth LiDAR.
 
-00:02:57.670 --> 00:03:01.934 position:50% size:60% align:center
+00:02:57.670 --> 00:03:01.934 line:55% position:50% size:60% align:center
 The failure cases show remaining limitations. In this low-light
 
-00:03:01.934 --> 00:03:05.994 position:50% size:60% align:center
+00:03:01.934 --> 00:03:05.994 line:55% position:50% size:60% align:center
 scene, distant structures can be missing or distorted in the
 
-00:03:05.994 --> 00:03:07.483 position:50% size:60% align:center
+00:03:05.994 --> 00:03:07.483 line:55% position:50% size:60% align:center
 generated point cloud.
 
-00:03:08.710 --> 00:03:12.911 position:50% size:60% align:center
+00:03:08.710 --> 00:03:12.911 line:55% position:50% size:60% align:center
 LiFTeR explores a path from surround-view images to renderable
 
-00:03:12.911 --> 00:03:16.028 position:50% size:60% align:center
+00:03:12.911 --> 00:03:16.028 line:55% position:50% size:60% align:center
 LiDAR representations. Thank you for watching.
