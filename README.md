@@ -28,7 +28,7 @@ window.LIDARGEN_MEDIA = {
 };
 ```
 
-首页当前使用 `assets/media/LiFTeR_demo_en_centered.mp4` 和对应的英文 WebVTT 字幕。支持 `video` / `image` 两种类型；使用 `altZh` 和 `altEn` 分别配置中英文无障碍描述。旧的 `alt` 配置仍用于中文页面，英文未提供时使用英文页面的默认描述。视频带控制栏，默认不自动播放；字幕可通过播放器控件切换。路径相对于 `index.html`，素材加载失败时页面会回退到原占位内容。建议视频为 MP4（H.264），图片为 JPG、PNG 或 WebP。
+首页当前使用 `assets/media/LiFTeR_demo_en_content_centered_subtitles.mp4`，英文字幕已嵌入视频画面，不能通过播放器单独关闭；为避免重复显示，未加载额外字幕轨。支持 `video` / `image` 两种类型；使用 `altZh` 和 `altEn` 分别配置中英文无障碍描述。旧的 `alt` 配置仍用于中文页面，英文未提供时使用英文页面的默认描述。视频带控制栏，默认不自动播放。路径相对于 `index.html`，素材加载失败时页面会回退到原占位内容。建议视频为 MP4（H.264），图片为 JPG、PNG 或 WebP。
 
 | 配置项 | 对应位置 | 建议比例 |
 |---|---|---|
