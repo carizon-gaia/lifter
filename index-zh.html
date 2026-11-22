@@ -203,7 +203,10 @@
         <details><summary>为什么使用 二维高斯？</summary><p>方案将 2DGS 作为局部表面表达，并结合 GS-LiDAR 渲染逐光束结果。其效果依赖数据、参数化与对比设置，不能视作在所有任务上都优于 3DGS。</p></details>
         <details><summary>为什么在 潜空间进行高斯解码？</summary><p>压缩后空间位置更少，有助于降低序列长度和计算、显存需求；但生成质量与效率仍需结合实际模型、硬件及实验验证。</p></details>
         <details><summary>为什么使用相机作为条件，而不是 占据表示？</summary><p>相机观测更常见、更易获取。该选择不意味着占据表示无效；不同条件输入具有不同的数据、几何和部署要求。</p></details>
-        <details><summary>目前还有哪些待解决问题？</summary><p>时序与新视角一致性、跨模态推理效率、纯相机数据接口以及不同传感器的标定和评估口径仍需验证。项目材料中的 200 m 量程不适用于此页 nuScenes 的 50 m 配置。</p></details>
+        <details><summary>为什么生成高斯场，而不是只生成距离图？</summary><p>距离图可以直接由 LiDAR VAE 解码；高斯场则可作为可渲染的场景表示，在不同位姿重复渲染，而无需在每个仿真时刻重新运行扩散模型。多场景对比进一步评估了新视角表现，但新显露区域的覆盖情况尚未单独量化。论文表 1 使用 VAE 解码评估生成，表 2、3 使用高斯解码评估重建；在同帧对照中，高斯解码的深度 PSNR 为 17.2053 dB，VAE 为 17.0658 dB，但高斯解码并非所有指标都更好。</p></details>
+        <details><summary>为什么将高斯位置约束在激光射线上？</summary><p>射线方向由传感器配置确定，模型只需预测沿射线的深度。在保持其他设置不变、改为自由预测三维位置并重新训练的消融实验中，Chamfer 距离从 1.5955 增至 14.4976，深度 PSNR 从 17.2053 dB 降至 13.1531 dB。这是该实验设置下的消融结果，不能直接推广到所有模型和数据。</p></details>
+        <details><summary>与逐场景重建方法的输入条件相同吗？</summary><p>并不完全相同。同帧评估中，LiFTeR 使用测试时刻的六路相机图像；测试场景未用于 DiT 和高斯解码器的训练。逐场景方法则使用其他帧的真实 LiDAR 进行场景优化。因此应结合输入模态、可用数据与任务设置理解比较结果，不能把它视为完全同条件的对照。</p></details>
+        <details><summary>新视角和多帧仿真如何处理动态物体？</summary><p>仿真应用使用 nuScenes 三维标注将预测高斯拆分为静态与动态部分；动态高斯在规范坐标系下跨帧聚合，再与静态场景一起渲染。表 3 的中间查询帧使用相邻两帧。摆脱标注依赖仍是未来工作，这些研究结果也不等同于当前单帧主 CLI 已验证的能力。</p></details>
       </div>
     </div></div></section>
     <section class="closing-section"><div class="wrap closing-inner"><div><p class="eyebrow">LiFTeR / 技术总结</p><h2>条件扩散生成。<br><span>逐射线高斯渲染。</span></h2></div><div class="closing-right"><p>LiFTeR</p><a href="#top">回到顶部 <span aria-hidden="true">↑</span></a></div></div></section>
